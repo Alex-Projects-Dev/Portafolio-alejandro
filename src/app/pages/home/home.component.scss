@@ -21,13 +21,41 @@
   opacity: 0.8;
   pointer-events: none;
   
-  /* Gradiente radial para oscurecer los bordes y enfocar el centro */
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, transparent 0%, var(--bg-color) 70%);
-  }
+  /* Mask instead of radial background so it adapts seamlessly to any bg color */
+  mask-image: radial-gradient(circle at center, black 0%, transparent 60%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 60%);
+}
+
+.decoration-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.blob-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--accent-primary);
+  top: 10%;
+  left: -100px;
+  animation: float 10s ease-in-out infinite alternate;
+}
+
+.blob-2 {
+  width: 500px;
+  height: 500px;
+  background: var(--accent-secondary);
+  bottom: -100px;
+  right: -100px;
+  animation: float 15s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(50px) scale(1.1); }
 }
 
 .hero-container {
@@ -49,67 +77,99 @@
 
 .hero-text-wrapper {
   max-width: 800px;
-  background: rgba(10, 15, 31, 0.4);
-  backdrop-filter: blur(12px);
-  padding: 4rem;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 210, 255, 0.1);
-  box-shadow: 0 0 40px rgba(0, 210, 255, 0.05);
+  /* HUD corners background + base background */
+  background: 
+    linear-gradient(to right, var(--accent-primary) 2px, transparent 2px) 0 0,
+    linear-gradient(to bottom, var(--accent-primary) 2px, transparent 2px) 0 0,
+    linear-gradient(to left, var(--accent-primary) 2px, transparent 2px) 100% 0,
+    linear-gradient(to bottom, var(--accent-primary) 2px, transparent 2px) 100% 0,
+    linear-gradient(to right, var(--accent-primary) 2px, transparent 2px) 0 100%,
+    linear-gradient(to top, var(--accent-primary) 2px, transparent 2px) 0 100%,
+    linear-gradient(to left, var(--accent-primary) 2px, transparent 2px) 100% 100%,
+    linear-gradient(to top, var(--accent-primary) 2px, transparent 2px) 100% 100%,
+    var(--container-bg);
+  background-size: 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 100% 100%;
+  background-repeat: no-repeat;
+  
+  backdrop-filter: blur(16px);
+  padding: 4.5rem;
+  border-radius: 4px; /* Flatter for HUD style */
+  border: 1px solid var(--container-border);
+  box-shadow: 0 0 50px var(--container-shadow), inset 0 0 60px rgba(0, 210, 255, 0.02);
+  position: relative;
+  overflow: hidden;
+
+  /* Subtle Scanline Texture */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(255, 255, 255, 0.02) 1px,
+      rgba(255, 255, 255, 0.02) 2px
+    );
+    pointer-events: none;
+    z-index: 10;
+  }
 }
 
 .greeting {
-  color: var(--accent-primary);
-  font-size: 1.2rem;
-  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  letter-spacing: 0.25em;
   font-weight: 600;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 10px var(--glow-color);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
 
 .hero-name {
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
   margin: 0;
   color: var(--text-primary);
   letter-spacing: -0.02em;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  line-height: 1.1;
 }
 
 .hero-title {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  font-weight: 300;
-  color: var(--accent-secondary);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--text-primary);
   margin-top: 0.5rem;
   margin-bottom: 2rem;
-  text-shadow: 0 0 15px rgba(176, 95, 253, 0.4);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .hero-desc {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #A78BFA; /* Vibrant violet */
   margin-bottom: 3rem;
   max-width: 600px;
   margin-inline: auto;
   line-height: 1.6;
+  text-shadow: 0 0 15px rgba(167, 139, 250, 0.4);
 }
 
 /* Typewriter Effect */
 .typewriter-container {
   display: inline-block;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1.2rem;
-  color: var(--accent-primary);
-  text-shadow: 0 0 8px var(--glow-color);
-  background: rgba(0, 210, 255, 0.05);
-  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  color: #75E6FF; /* Cyan */
+  text-shadow: 0 0 10px rgba(117, 230, 255, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.6rem 1.2rem;
   border-radius: 4px;
-  border-left: 2px solid var(--accent-primary);
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 2px solid #75E6FF;
+  position: relative;
+  z-index: 20; /* Keep above scanlines */
 }
 
 @keyframes blink {
@@ -118,22 +178,35 @@
 
 .typewriter-text {
   display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 4s steps(48, end) infinite alternate;
   vertical-align: bottom;
+  white-space: nowrap;
 }
 
 .cursor {
   display: inline-block;
-  width: 10px;
-  height: 1.2rem;
-  background-color: var(--accent-primary);
+  width: 2px;
+  height: 1.1rem;
+  background-color: #75E6FF;
   margin-left: 4px;
   vertical-align: bottom;
-  animation: blink 1s step-end infinite;
+  animation: blink 0.7s step-end infinite;
+  box-shadow: 0 0 8px #75E6FF;
 }
 
 .cta-wrapper {
   margin-top: 1rem;
+  position: relative;
+  z-index: 20;
 }
+
+@media (max-width: 768px) {
+  .hero-text-wrapper {
+    padding: 2.5rem 1.5rem;
+    background-size: 15px 15px, 15px 15px, 15px 15px, 15px 15px, 15px 15px, 15px 15px, 15px 15px, 15px 15px, 100% 100%;
+  }
+  .typewriter-container {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+

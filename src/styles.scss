@@ -1,46 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
 
-:root {
-  /* Light Theme (Default fallback, though dark might be system preferred) */
-  --bg-color: #f0f4f8;
-  --text-primary: #0a0f1f;
-  --text-secondary: #4a5568;
-  --grid-line-color: rgba(0, 100, 255, 0.08);
-  --accent-primary: #0056b3;
-  --accent-secondary: #6a0dad;
-  --glow-color: rgba(0, 100, 255, 0.3);
-  --glow-strong: rgba(0, 100, 255, 0.5);
-  --btn-bg: rgba(0, 86, 179, 0.1);
-  --btn-border: #0056b3;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark Theme - Sci-Fi Futuristic Dashboard */
-    --bg-color: #0a0f1f;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --grid-line-color: rgba(0, 210, 255, 0.07);
-    --accent-primary: #00d2ff;
-    --accent-secondary: #b05ffd;
-    --glow-color: rgba(0, 210, 255, 0.4);
-    --glow-strong: rgba(0, 210, 255, 0.8);
-    --btn-bg: rgba(0, 210, 255, 0.05);
-    --btn-border: #00d2ff;
-  }
-}
-
-[data-theme="dark"] {
+/* --- DARK THEME (Default) --- */
+:root, [data-theme="dark"] {
   --bg-color: #0a0f1f;
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --grid-line-color: rgba(0, 210, 255, 0.07);
+  --grid-line-color: rgba(0, 210, 255, 0.1);
   --accent-primary: #00d2ff;
   --accent-secondary: #b05ffd;
   --glow-color: rgba(0, 210, 255, 0.4);
   --glow-strong: rgba(0, 210, 255, 0.8);
   --btn-bg: rgba(0, 210, 255, 0.05);
   --btn-border: #00d2ff;
+  
+  --container-bg: rgba(10, 15, 31, 0.5);
+  --container-border: rgba(0, 210, 255, 0.1);
+  --container-shadow: rgba(0, 210, 255, 0.05);
+  --nav-bg: rgba(10, 15, 31, 0.5);
+  --nav-border: rgba(255, 255, 255, 0.05);
+}
+
+/* --- LIGHT THEME (Explicit) --- */
+[data-theme="light"] {
+  --bg-color: #f8fafc;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --grid-line-color: rgba(37, 99, 235, 0.1);
+  --accent-primary: #2563eb;
+  --accent-secondary: #7e22ce;
+  --glow-color: rgba(37, 99, 235, 0.2);
+  --glow-strong: rgba(37, 99, 235, 0.4);
+  --btn-bg: rgba(37, 99, 235, 0.05);
+  --btn-border: #2563eb;
+  
+  --container-bg: rgba(255, 255, 255, 0.65);
+  --container-border: rgba(37, 99, 235, 0.15);
+  --container-shadow: rgba(37, 99, 235, 0.05);
+  --nav-bg: rgba(255, 255, 255, 0.5);
+  --nav-border: rgba(0, 0, 0, 0.05);
 }
 
 body {

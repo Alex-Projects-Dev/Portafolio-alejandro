@@ -1,4 +1,6 @@
 <div class="holographic-grid-bg"></div>
+<div class="decoration-blob blob-1"></div>
+<div class="decoration-blob blob-2"></div>
 
 <div class="hero-container">
   <app-navbar></app-navbar>
@@ -10,11 +12,11 @@
       <h2 class="hero-title">Front-End Developer</h2>
       
       <p class="hero-desc">
-        I build accessible, inclusive products and digital experiences for the web.
+        Crafting clean, fast and accessible web interfaces.
       </p>
 
       <div class="typewriter-container">
-        <span class="typewriter-text">building clean, fast and futuristic interfaces...</span><span class="cursor"></span>
+        <span class="typewriter-text">{{ currentText() }}</span><span class="cursor"></span>
       </div>
 
       <div class="cta-wrapper">

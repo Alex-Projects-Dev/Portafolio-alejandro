@@ -14,11 +14,11 @@
 .nav-links {
   display: flex;
   gap: 3rem;
-  background: rgba(10, 15, 31, 0.4);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   padding: 1rem 3rem;
   border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--nav-border);
   
   a {
     color: var(--text-primary);
@@ -26,11 +26,29 @@
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.05em;
+    position: relative;
+    padding-bottom: 4px;
     transition: color 0.3s ease, text-shadow 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
     
     &:hover {
       color: var(--accent-primary);
       text-shadow: 0 0 10px var(--glow-color);
+      
+      &::after {
+        width: 100%;
+      }
     }
   }
 }
@@ -38,9 +56,9 @@
 .theme-toggle {
   position: absolute;
   right: 2rem;
-  background: rgba(10, 15, 31, 0.4);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--nav-border);
   color: var(--text-primary);
   cursor: pointer;
   padding: 0.6rem;
