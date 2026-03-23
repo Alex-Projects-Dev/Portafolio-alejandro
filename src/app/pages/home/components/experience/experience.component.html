@@ -1,0 +1,45 @@
+<section id="experience" class="section-container">
+  <div class="section-header">
+    <h2 class="section-title">Experience <span>&</span> Education</h2>
+    <div class="title-line"></div>
+  </div>
+
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+    
+    <div class="timeline-group">
+      <h3 class="group-title">Work Experience</h3>
+      
+      @for (exp of experiences; track exp.company) {
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-card">
+            <div class="timeline-header">
+              <h4 class="role">{{ exp.role }}</h4>
+              <span class="period">{{ exp.period }}</span>
+            </div>
+            <h5 class="company">{{ exp.company }}</h5>
+            <p class="description">{{ exp.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="timeline-group edu-group">
+      <h3 class="group-title">Education</h3>
+      
+      @for (edu of education; track edu.title) {
+        <div class="timeline-item">
+          <div class="timeline-dot edu-dot"></div>
+          <div class="timeline-content glass-card">
+            <div class="timeline-header">
+              <h4 class="role">{{ edu.title }}</h4>
+              <span class="period">{{ edu.period }}</span>
+            </div>
+            <h5 class="company">{{ edu.institution }}</h5>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

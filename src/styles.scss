@@ -49,3 +49,22 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
 }
+
+/* Scroll Reveal Animations */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: edgeLight 1s ease-out forwards;
+}
+
+@keyframes edgeLight {
+  0% { box-shadow: 0 0 0 transparent; }
+  50% { box-shadow: 0 0 60px var(--glow-color), inset 0 0 20px var(--glow-color); }
+  100% { box-shadow: inherit; } /* Fall back to component's normal shadow */
+}

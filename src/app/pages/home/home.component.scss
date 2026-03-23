@@ -5,32 +5,53 @@
   overflow: hidden;
 }
 
-.holographic-grid-bg {
+.parallax-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  /* Ensure clipping doesn't break fixed layers completely */
+  clip-path: inset(0);
+}
+
+.parallax-layer-1, .parallax-layer-2, .parallax-layer-3 {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  pointer-events: none;
+}
+
+/* Layer 1: Deep Space Gradient */
+.deep-space-bg {
+  z-index: -3;
+  background: radial-gradient(ellipse at bottom right, rgba(20, 25, 50, 0.4) 0%, var(--bg-color) 70%);
+}
+
+.holographic-grid-bg {
+  z-index: -2;
   background-image: 
     linear-gradient(var(--grid-line-color) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
   background-size: 60px 60px;
   background-position: center center;
-  transform: perspective(600px) rotateX(60deg) translateY(-50px) scale(2.5);
   opacity: 0.8;
-  pointer-events: none;
-  
-  /* Mask instead of radial background so it adapts seamlessly to any bg color */
   mask-image: radial-gradient(circle at center, black 0%, transparent 60%);
   -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 60%);
+  /* Transform is now applied dynamically inline via Signal */
+  will-change: transform;
+}
+
+.orbs-layer {
+  z-index: -1;
+  will-change: transform;
 }
 
 .decoration-blob {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  z-index: 0;
   opacity: 0.5;
   pointer-events: none;
 }
@@ -74,6 +95,66 @@
   padding: 2rem;
   text-align: center;
 }
+
+.light-streaks-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.3), transparent);
+    transform-origin: center;
+  }
+  
+  &::before {
+    top: 30%;
+    left: -50%;
+    transform: rotate(35deg);
+    animation: streak 12s linear infinite;
+  }
+  
+  &::after {
+    top: 70%;
+    left: -50%;
+    transform: rotate(-25deg);
+    animation: streak 15s linear infinite reverse;
+  }
+}
+
+@keyframes streak {
+  0% { transform: translateY(-300px) rotate(35deg) translateX(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(300px) rotate(35deg) translateX(100%); opacity: 0; }
+}
+
+.tilt-wrapper {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out; /* Smooth follow for mousemove */
+  /* hardware acceleration */
+  will-change: transform;
+}
+
+.parallax-element {
+  /* Hardware acceleration for smooth scroll transforms */
+  will-change: transform;
+  display: inline-block; /* Ensure block elements take up space correctly for transforms */
+  width: 100%; /* Reset width for block elements inside like headers */
+  position: relative;
+  z-index: 5; /* Keep them above HUD corners */
+}
+.desc-element { margin-bottom: 3rem; }
+.cta-element { z-index: 20; position: relative; }
 
 .hero-text-wrapper {
   max-width: 800px;

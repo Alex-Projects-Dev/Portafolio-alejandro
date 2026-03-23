@@ -1,0 +1,37 @@
+<section id="projects" class="section-container">
+  <div class="section-header">
+    <h2 class="section-title">Selected <span>Projects</span></h2>
+    <div class="title-line"></div>
+  </div>
+
+  <div class="projects-grid">
+    @for (project of projects; track project.title) {
+      <div class="project-card glass-card">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path [attr.d]="project.icon"></path>
+          </svg>
+        </div>
+        
+        <div class="project-content">
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-desc">{{ project.description }}</p>
+          
+          <div class="project-tags">
+            @for (tag of project.tags; track tag) {
+              <span class="tag">{{ tag }}</span>
+            }
+          </div>
+        </div>
+
+        <a [href]="project.link" class="project-link" aria-label="View project">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+    }
+  </div>
+</section>

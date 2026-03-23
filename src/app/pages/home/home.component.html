@@ -1,27 +1,58 @@
-<div class="holographic-grid-bg"></div>
-<div class="decoration-blob blob-1"></div>
-<div class="decoration-blob blob-2"></div>
+<app-navbar></app-navbar>
 
-<div class="hero-container">
-  <app-navbar></app-navbar>
+<div class="parallax-wrapper">
+  <!-- Layer 1: Deep Dark Gradient (controlled by SCSS) -->
+  <div class="parallax-layer-1 deep-space-bg"></div>
+  
+  <!-- Layer 2: Holographic Grid -->
+  <div class="parallax-layer-2 holographic-grid-bg" [style.transform]="gridTransform()"></div>
+  
+  <!-- Layer 3: Floating Orbs -->
+  <div class="parallax-layer-3 orbs-layer" [style.transform]="orbsTransform()">
+    <div class="decoration-blob blob-1"></div>
+    <div class="decoration-blob blob-2"></div>
+  </div>
 
-  <main class="hero-content">
-    <div class="hero-text-wrapper">
-      <p class="greeting">HI, I'M</p>
-      <h1 class="hero-name">Alejandro Bernal</h1>
-      <h2 class="hero-title">Front-End Developer</h2>
-      
-      <p class="hero-desc">
-        Crafting clean, fast and accessible web interfaces.
-      </p>
+  <!-- Light Streaks Background Layer -->
+  <div class="light-streaks-layer"></div>
 
-      <div class="typewriter-container">
-        <span class="typewriter-text">{{ currentText() }}</span><span class="cursor"></span>
+  <!-- Layer 4: Static Hero Content Container -->
+  <div class="parallax-layer-4 hero-container" [style.transform]="heroPanelTransform()">
+    <main class="hero-content">
+      <!-- Tilt effect wrapper -->
+      <div class="tilt-wrapper" [style.transform]="tiltTransform()">
+        <div class="hero-text-wrapper">
+          <p class="greeting">HI, I'M</p>
+          <div class="parallax-element" [style.transform]="nameTransform()">
+            <h1 class="hero-name">Alejandro Bernal Tronchoni</h1>
+          </div>
+          <div class="parallax-element" [style.transform]="titleTransform()">
+            <h2 class="hero-title">Front-End Developer</h2>
+          </div>
+          
+          <div class="parallax-element desc-element" [style.transform]="descTransform()">
+            <p class="hero-desc">
+              Crafting clean, fast and futuristic web interfaces.
+            </p>
+          </div>
+
+          <div class="typewriter-container parallax-element" [style.transform]="typewriterTransform()">
+            <span class="typewriter-text">{{ currentText() }}</span><span class="cursor"></span>
+          </div>
+
+          <div class="cta-wrapper parallax-element cta-element" [style.transform]="ctaTransform()">
+            <app-button-sci-fi href="#projects">View My Work</app-button-sci-fi>
+          </div>
+        </div>
       </div>
-
-      <div class="cta-wrapper">
-        <app-button-sci-fi href="#projects">View My Work</app-button-sci-fi>
-      </div>
-    </div>
-  </main>
+    </main>
+  </div>
 </div>
+
+<!-- Portfolio Sections Below Hero -->
+<app-experience appScrollReveal></app-experience>
+<app-projects appScrollReveal></app-projects>
+<app-skills appScrollReveal></app-skills>
+<app-contact appScrollReveal></app-contact>
+
+<app-scroll-top-btn></app-scroll-top-btn>

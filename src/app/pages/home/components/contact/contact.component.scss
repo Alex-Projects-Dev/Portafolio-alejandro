@@ -1,0 +1,91 @@
+.section-container {
+  padding: 6rem 2rem 2rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.contact-card {
+  background: var(--container-bg);
+  backdrop-filter: blur(16px);
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--container-border);
+  box-shadow: 0 0 40px var(--container-shadow);
+  margin-bottom: 4rem;
+  
+  /* Cyberpunk cuts */
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+}
+
+.contact-header {
+  margin-bottom: 3rem;
+  
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.1;
+    
+    span {
+      text-shadow: 0 0 15px var(--glow-color);
+      color: transparent;
+      -webkit-text-stroke: 1px var(--accent-primary);
+    }
+  }
+  
+  .contact-desc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+.cta-wrapper {
+  margin-bottom: 3rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  
+  .social-icon {
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+    
+    &:hover {
+      color: var(--accent-secondary);
+      transform: translateY(-5px);
+      filter: drop-shadow(0 0 10px rgba(176, 95, 253, 0.6));
+    }
+  }
+}
+
+.footer {
+  text-align: center;
+  margin-top: 4rem;
+  
+  p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .footer-tech {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    font-size: 0.8rem;
+  }
+}
