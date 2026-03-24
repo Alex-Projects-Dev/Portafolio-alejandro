@@ -11,7 +11,7 @@
       <h3 class="group-title">Work Experience</h3>
       
       @for (exp of experiences; track exp.company) {
-        <div class="timeline-item">
+        <div class="timeline-item" appScrollReveal>
           <div class="timeline-dot"></div>
           <div class="timeline-content glass-card">
             <div class="timeline-header">
@@ -29,7 +29,7 @@
       <h3 class="group-title">Education</h3>
       
       @for (edu of education; track edu.title) {
-        <div class="timeline-item">
+        <div class="timeline-item" appScrollReveal>
           <div class="timeline-dot edu-dot"></div>
           <div class="timeline-content glass-card">
             <div class="timeline-header">

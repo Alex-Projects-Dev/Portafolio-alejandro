@@ -1,9 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal/scroll-reveal.directive';
 
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [],
+  imports: [ScrollRevealDirective],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

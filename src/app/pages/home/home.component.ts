@@ -6,20 +6,18 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { ProjectsComponent } from './components/projects/projects.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal/scroll-reveal.directive';
 import { ScrollTopBtnComponent } from '../../shared/components/scroll-top-btn/scroll-top-btn.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    NavbarComponent, 
-    ButtonSciFiComponent, 
-    ExperienceComponent, 
-    ProjectsComponent, 
-    SkillsComponent, 
+    NavbarComponent,
+    ButtonSciFiComponent,
+    ExperienceComponent,
+    ProjectsComponent,
+    SkillsComponent,
     ContactComponent,
-    ScrollRevealDirective,
     ScrollTopBtnComponent
   ],
   templateUrl: './home.component.html',
@@ -36,11 +34,11 @@ export default class HomeComponent implements OnInit, OnDestroy {
     "Diseñando sistemas UI minimalistas y futuristas..."
   ];
   currentText = signal('');
-  
+
   // Parallax signals (Background)
   gridTransform = signal('perspective(600px) rotateX(60deg) translateY(-50px) scale(2.5)');
   orbsTransform = signal('translateY(0px)');
-  
+
   // Parallax signals (UI Foreground)
   heroPanelTransform = signal('translateY(0px)');
   nameTransform = signal('translateY(0px)');
@@ -66,11 +64,11 @@ export default class HomeComponent implements OnInit, OnDestroy {
   onWindowScroll() {
     if (!this.isBrowser) return;
     const scrollY = window.scrollY;
-    
+
     // Background Parallax
     this.gridTransform.set(`perspective(600px) rotateX(60deg) translateY(${scrollY * 0.2 - 50}px) scale(2.5)`);
     this.orbsTransform.set(`translateY(${scrollY * -0.5}px)`);
-    
+
     // UI Foreground Parallax (Multi-layer Z-depth illusion)
     this.heroPanelTransform.set(`translateY(${scrollY * 0.2}px)`); // Whole panel moves slowly up
     this.nameTransform.set(`translateY(${scrollY * 0.05}px)`);
@@ -84,10 +82,10 @@ export default class HomeComponent implements OnInit, OnDestroy {
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
     if (!this.isBrowser) return;
-    
+
     const x = (window.innerWidth / 2 - event.clientX) / 40; // Max ~20deg rotation
     const y = (window.innerHeight / 2 - event.clientY) / 40;
-    
+
     // RotateX is driven by Y coordinate (inverted), RotateY by X coordinate
     this.tiltTransform.set(`rotateX(${y}deg) rotateY(${-x}deg)`);
   }

@@ -4,5 +4,9 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home.component')
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./pages/not-found/not-found.component')
   }
 ];

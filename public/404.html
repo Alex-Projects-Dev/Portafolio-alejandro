@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>404 | System Offline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #030014;
+      color: #fff;
+      font-family: 'Inter', system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+    }
+    
+    .glitch-container {
+      position: relative;
+      z-index: 2;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .glitch {
+      font-size: clamp(6rem, 15vw, 10rem);
+      font-weight: 900;
+      color: #00d2ff;
+      text-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+      position: relative;
+      margin: 0;
+      letter-spacing: 10px;
+      line-height: 1;
+    }
+    
+    .subtitle {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 1.5rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .btn {
+      margin-top: 4rem;
+      padding: 1rem 3rem;
+      background: rgba(176, 95, 253, 0.05);
+      color: #b05ffd;
+      border: 1px solid rgba(176, 95, 253, 0.5);
+      border-radius: 4px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 2px;
+      box-shadow: 0 0 20px rgba(176, 95, 253, 0.2);
+      z-index: 2;
+      backdrop-filter: blur(5px);
+    }
+    
+    .btn:hover {
+      background: rgba(176, 95, 253, 0.2);
+      border-color: #b05ffd;
+      box-shadow: 0 0 40px rgba(176, 95, 253, 0.6), inset 0 0 10px rgba(176, 95, 253, 0.4);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Grid Holográfico del Fondo */
+    .grid {
+      position: absolute;
+      top: -50%; left: -50%; right: -50%; bottom: -50%;
+      background-image: 
+        linear-gradient(rgba(0, 210, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 210, 255, 0.07) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+      transform: perspective(600px) rotateX(60deg) translateY(-100px) scale(2);
+      animation: gridMove 20s linear infinite;
+    }
+    
+    /* Simulación de monitor CRT */
+    .scanline {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(
+        to bottom, 
+        rgba(255,255,255,0), 
+        rgba(255,255,255,0) 50%, 
+        rgba(0,0,0,0.1) 50%, 
+        rgba(0,0,0,0.1)
+      );
+      background-size: 100% 4px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* Viñeta para oscurecer los bordes */
+    .vignette {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle, transparent 50%, #030014 150%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes gridMove {
+      0% {
+        transform: perspective(600px) rotateX(60deg) translateY(0) scale(2);
+      }
+      100% {
+        transform: perspective(600px) rotateX(60deg) translateY(50px) scale(2);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="vignette"></div>
+  <div class="scanline"></div>
+  
+  <div class="glitch-container">
+    <h1 class="glitch">404</h1>
+    <p class="subtitle">Neural Link Severed • Sector Not Found</p>
+  </div>
+  
+  <!-- Redirección directa a la raíz del proyecto en Github Pages -->
+  <a href="/Portafolio-alejandro/" class="btn">REBOOT SYSTEM</a>
+</body>
+</html>

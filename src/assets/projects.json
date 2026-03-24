@@ -1,0 +1,51 @@
+[
+  {
+    "title": "Portfolio v1",
+    "description": "Un portafolio futurista construido con Angular, animaciones y parallax.",
+    "icon": [
+      "fa-solid fa-code",
+      "fa-solid fa-palette"
+    ],
+    "status": "IN WORK",
+    "tags": [
+      "Angular",
+      "TypeScript",
+      "SCSS"
+    ],
+    "demo": "https://alex-projects-dev.github.io/Portafolio-alejandro/",
+    "github": "https://github.com/alex-projects-dev/portafolio"
+  },
+  {
+    "title": "SHIA",
+    "description": "Una red social para compartir y socializar sobre el mundo de las cachimbas y sus sabores",
+    "icon": [
+      "fa-solid fa-users",
+      "fa-solid fa-bong"
+    ],
+    "status": "IN WORK",
+    "tags": [
+      "Angular",
+      "TypeScript",
+      "Ionic",
+      "Firebase"
+    ],
+    "demo": "#",
+    "github": "https://github.com/Alex-Projects-Dev/SiHumo.IA---SHIA"
+  },
+  {
+    "title": "SHIA .NET",
+    "description": "Gestion de BBDD sobre la app de SHIA con control de usuario y datos",
+    "icon": [
+      "fa-solid fa-server",
+      "fa-solid fa-database"
+    ],
+    "status": "IN WORK",
+    "tags": [
+      ".NET",
+      "C#",
+      "SQL Server"
+    ],
+    "demo": "#",
+    "github": "https://github.com/Alex-Projects-Dev/SiHumo.IA-Backend"
+  }
+]
